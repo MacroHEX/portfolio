@@ -7,3 +7,4 @@ export * from "./Skills"
 export * from "./WorkingExperience";
 export * from "./Skill"
 export * from "./Projects"
+export * from "./ContactMe"
