@@ -1,6 +1,19 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-}
+  images: {
+    remotePatterns: [
+      {
+        hostname: "pps.whatsapp.net",
+      },
+      {
+        hostname: "media.badgr.com"
+      },
+      {
+        hostname: "cdn.pixabay.com"
+      }
+    ],
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
