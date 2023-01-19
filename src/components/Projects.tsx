@@ -1,11 +1,14 @@
 import Image from "next/image";
 
 import { motion } from "framer-motion";
+import { Project } from "typing";
+import { urlFor } from "sanity";
 
-interface Props {}
+interface Props {
+  projects: Project[];
+}
 
-export const Projects = ({}: Props) => {
-  const projects = [1, 2, 3, 4, 5];
+export const Projects = ({ projects }: Props) => {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -17,11 +20,14 @@ export const Projects = ({}: Props) => {
         Proyectos
       </h3>
 
-      <div className="relative w-full flex overflow-x-scroll overflow-y-hidden snap-x snap-mandatory z-20">
+      <div
+        className="relative w-full flex overflow-x-scroll overflow-y-hidden snap-x snap-mandatory z-20
+        scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#FF0149]"
+      >
         {projects.map((project, i) => (
           <div
             className="w-screen flex-shrink-0 snap-center flex flex-col space-y-5 items-center justify-center p-20 md:p-44 h-screen"
-            key={project.valueOf()}
+            key={project._id}
           >
             <motion.div
               initial={{
@@ -33,7 +39,7 @@ export const Projects = ({}: Props) => {
               viewport={{ once: true }}
             >
               <Image
-                src="https://cdn.pixabay.com/photo/2015/12/04/14/05/code-1076536_960_720.jpg"
+                src={urlFor(project?.image).url()}
                 alt="project_image"
                 width={600}
                 height={600}
@@ -44,17 +50,24 @@ export const Projects = ({}: Props) => {
                 <span className="underline decoration-[#FF0149]/50">
                   Case Study {i + 1} of {projects.length}:
                 </span>
-                &nbsp;Something
+                &nbsp;{project?.title}
               </h4>
+
+              <div className="flex items-center space-x-2 justify-center">
+                {project.technologies.map((technology) => (
+                  <Image
+                    key={technology._id}
+                    className="h-10 w-10 rounded-full"
+                    src={urlFor(technology.image).url()}
+                    alt="badge"
+                    width={512}
+                    height={512}
+                  />
+                ))}
+              </div>
+
               <p className="text-lg text-center md:text-left">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Tenetur, nesciunt? Cum perspiciatis voluptates perferendis? Quo
-                excepturi, deserunt enim repudiandae cum, ex error beatae fuga
-                sequi rerum dolores velit, eum laboriosam! Fuga aliquid
-                obcaecati sint eum! Rem sed, doloribus molestias vitae id
-                maiores magni consequuntur culpa, corporis sunt expedita
-                officiis ab? Accusamus nihil veritatis odio consequatur quaerat
-                vitae eos consectetur recusandae.
+                {project?.summary}
               </p>
             </div>
           </div>

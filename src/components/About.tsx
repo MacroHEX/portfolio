@@ -1,10 +1,14 @@
 import Image from "next/image";
 
 import { motion } from "framer-motion";
+import { PageInfo } from "typing";
+import { urlFor } from "sanity";
 
-interface Props {}
+interface Props {
+  pageInfo: PageInfo;
+}
 
-export const About = ({}: Props) => {
+export const About = ({pageInfo}: Props) => {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -26,7 +30,7 @@ export const About = ({}: Props) => {
       >
         <Image
           className="w-40 h-40 rounded-full object-cover md:rounded-lg md:w-64 md:h-64 xl:w-[500px] xl:h-[500px]"
-          src="https://pps.whatsapp.net/v/t61.24694-24/309137167_821201402630353_2841463782928132152_n.jpg?ccb=11-4&oh=01_AdRUWzNO0iKQxkB_pGYpQYytWELqIpDBNmvvY7l0jmBdZA&oe=63D518E7"
+          src={urlFor(pageInfo?.profilePic).url()}
           alt="profile"
           width={512}
           height={512}
@@ -39,19 +43,7 @@ export const About = ({}: Props) => {
           background
         </h4>
         <p className="text-base">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt sit
-          voluptates laboriosam tempora ullam magnam sequi porro ea omnis quas
-          minus distinctio, tenetur accusamus aliquid culpa, unde a quos.
-          Quibusdam? Ratione quam perspiciatis ea dolore! Ullam ratione error
-          tempora necessitatibus, est possimus perferendis. Cum, sunt natus.
-          Molestias, impedit! Repudiandae nesciunt eius magnam laborum possimus
-          quisquam suscipit minus nam placeat reprehenderit? Ipsum voluptatum ut
-          hic ad rem alias, reprehenderit recusandae ipsa ducimus ullam,
-          officiis tenetur dicta ipsam! Repudiandae impedit quos in nostrum et
-          optio, ipsum, amet modi iusto autem explicabo voluptatem. Quas
-          assumenda alias perferendis? Repellat ut nobis quos. Ipsa iste
-          corrupti, tempore minima perferendis neque, eius voluptatum blanditiis
-          quidem temporibus molestiae illum ea aliquid eum labore numquam
+          {pageInfo?.backgroundInformation}
         </p>
       </div>
     </motion.div>

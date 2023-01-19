@@ -7,11 +7,14 @@ const nextConfig = {
         hostname: "pps.whatsapp.net",
       },
       {
-        hostname: "media.badgr.com"
+        hostname: "media.badgr.com",
       },
       {
-        hostname: "cdn.pixabay.com"
-      }
+        hostname: "cdn.pixabay.com",
+      },
+      {
+        hostname: "cdn.sanity.io",
+      },
     ],
   },
 };

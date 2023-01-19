@@ -2,15 +2,19 @@ import Image from "next/image";
 import NextLink from "next/link";
 
 import { Cursor, useTypewriter } from "react-simple-typewriter";
+import { urlFor } from "sanity";
+import { PageInfo } from "typing";
 
 import { BackgroundCircles } from "./";
 
-interface Props {}
+interface Props {
+  pageInfo: PageInfo;
+}
 
-export const Hero = ({}: Props) => {
+export const Hero = ({ pageInfo }: Props) => {
   const [text, count] = useTypewriter({
     words: [
-      "Hola, me llamo Martín",
+      `Hola, me llamo ${pageInfo?.name}`,
       "Aprendo-lo-que-sea.tsx",
       "<AunqueNoTengaTiempo />",
     ],
@@ -24,15 +28,15 @@ export const Hero = ({}: Props) => {
 
       <Image
         className="relative rounded-full mx-auto object-cover"
-        src="https://pps.whatsapp.net/v/t61.24694-24/309137167_821201402630353_2841463782928132152_n.jpg?ccb=11-4&oh=01_AdRUWzNO0iKQxkB_pGYpQYytWELqIpDBNmvvY7l0jmBdZA&oe=63D518E7"
+        src={urlFor(pageInfo?.heroImage).url()}
         alt="profile"
-        width={128}
-        height={128}
+        width={512}
+        height={512}
       />
 
       <div className="z-20">
         <h2 className="text-sm uppercase text-gray-500 pb-2 tracking-[15px]">
-          Software Developer
+          {pageInfo?.role}
         </h2>
         <h1 className="text-5xl lg:text-6xl font-semibold px-10">
           <span className="mr-3">{text}</span>
@@ -40,16 +44,16 @@ export const Hero = ({}: Props) => {
         </h1>
 
         <div className="pt-5">
-          <NextLink href="#about">
+          <NextLink href="#about" legacyBehavior>
             <button className="heroButton">Acerca de mí</button>
           </NextLink>
-          <NextLink href="#experience">
+          <NextLink href="#experience" legacyBehavior>
             <button className="heroButton">Experiencia</button>
           </NextLink>
-          <NextLink href="#skills">
+          <NextLink href="#skills" legacyBehavior>
             <button className="heroButton">Habilidades</button>
           </NextLink>
-          <NextLink href="#projects">
+          <NextLink href="#projects" legacyBehavior>
             <button className="heroButton">Proyectos</button>
           </NextLink>
         </div>

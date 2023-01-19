@@ -1,11 +1,14 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { urlFor } from "sanity";
+import * as typing from "typing";
 
 interface Props {
   directionLeft?: boolean;
+  skill: typing.Skill;
 }
 
-export const Skill = ({ directionLeft }: Props) => {
+export const Skill = ({ directionLeft, skill }: Props) => {
   return (
     <div className="group relative flex cursor-pointer">
       <motion.div
@@ -19,7 +22,7 @@ export const Skill = ({ directionLeft }: Props) => {
         <Image
           className="rounded-full border border-gray-500 object-cover h-24 w-24
           md:w-28 md:h-28 xl:w-32 xl:h-32 filter group-hover:grayscale transition duration-300 ease-in-out"
-          src="https://media.badgr.com/uploads/badges/issuer_badgeclass_301f5eaa-2b66-438b-b5e6-c3d5bc119b87.png"
+          src={urlFor(skill?.image).url()}
           alt="badge"
           width={100}
           height={100}
@@ -30,7 +33,9 @@ export const Skill = ({ directionLeft }: Props) => {
         md:w-28 md:h-28 xl:w-32 xl:h-32 rounded-full z-0"
       >
         <div className="flex items-center justify-center h-full">
-          <p className="text-3xl font-bold text-black opacity-100">100%</p>
+          <p className="text-3xl font-bold text-black opacity-100">
+            {skill.progress}%
+          </p>
         </div>
       </div>
     </div>
