@@ -17,7 +17,7 @@ export const About = ({pageInfo}: Props) => {
       className="flex flex-col relative h-screen text-center md:text-left md:flex-row
       max-w-7xl px-10 justify-evenly mx-auto items-center"
     >
-      <h3 className="absolute top-24 uppercase tracking-[20px] text-gray-500 text-2xl">
+      <h3 className="absolute top-24 uppercase tracking-[20px] text-gray-500 text-xl  md:text-2xl">
         Acerca de mí
       </h3>
       {/* //TODO: Corregir Imagen */}
@@ -26,10 +26,10 @@ export const About = ({pageInfo}: Props) => {
         transition={{ duration: 1.2 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
-        className="flex justify-center mx-auto -mb-20 md:mb-0 flex-shrink-0"
+        className="flex justify-center mx-auto -mb-20 md:mb-0 flex-shrink-0 items-center"
       >
         <Image
-          className="w-40 h-40 rounded-full object-cover md:rounded-lg md:w-64 md:h-64 xl:w-[500px] xl:h-[500px]"
+          className="w-36 h-36 rounded-full object-cover md:rounded-lg md:w-64 md:h-64 xl:w-[500px] xl:h-[500px]"
           src={urlFor(pageInfo?.profilePic).url()}
           alt="profile"
           width={512}

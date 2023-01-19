@@ -4,16 +4,10 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        hostname: "pps.whatsapp.net",
-      },
-      {
-        hostname: "media.badgr.com",
+        hostname: "cdn.sanity.io",
       },
       {
         hostname: "cdn.pixabay.com",
-      },
-      {
-        hostname: "cdn.sanity.io",
       },
     ],
   },

@@ -27,7 +27,7 @@ export const Hero = ({ pageInfo }: Props) => {
       <BackgroundCircles />
 
       <Image
-        className="relative rounded-full mx-auto object-cover"
+        className="w-32 h-32 relative rounded-full mx-auto object-cover"
         src={urlFor(pageInfo?.heroImage).url()}
         alt="profile"
         width={512}
